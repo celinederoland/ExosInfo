@@ -1,0 +1,30 @@
+\titre{Définition par récurrence} : \\
+$\left. \begin{array}{l}
+	AB_0 =\{\vide\} \\
+  AB_{n+1} = AB_n\bigcup \{(g,a,d),a\in A,\;g,d\in AB_n\}
+	\end{array}\right\}
+AB_{rec}=\displaystyle{\bigcup_{\N}} AB_n$
+
+\titre{Rappel} : \\
+$\left\{ \begin{array}{l}
+	(B) : \vide \in AB \\
+	(I) \forall g,d \in AB, \forall a \in A, (g,a,d)\in AB 
+\end{array}
+\right.$\\
+
+\titre{Propriété} : $AB_{rec} = AB$
+
+\titre{Preuve} : \begin{enumerate}
+\item Montrons que $AB_{rec} \subset AB$, (montrons que $AB_n\subset AB \forall n$) \\
+	$AB_0 = \{\vide\} \subset AB$\\
+	Supposons $AB_n \subset AB$ et montrons que $AB_{n+1}\subset AB$ \\
+	Soit $x\in AB_{n+1} = AB_n\bigcup \{ (g,a,d), a\in A, g,d \in AB_n \}$ \\
+	Si $x\in AB_n$ alors $x\in AB$ par hypothèse de récurrence \\
+	Sinon $x=(g,a,d)$, $g,d \in AB_n\subset AB$ et $a\in A$ donc $x\in AB$ d'après $(I)$
+\item Montrons que $AB\subset AB_{rec}$ (il suffit de montrer que $AB_{rec}$ respecte $(B)$ et $(I)$) \\
+	$\vide\in AB_0 \subset AB_{rec}$ donc $AB_{rec}$ vérifie $(B)$.\\
+	Soient $g,g\in AB_{req}, \exist p \in \N \tq g,d\in AB_p$ \\
+	Donc $\forall a\in A, (g,a,d)\in AB_{p+1}\subset AB_{rec}$ \\
+	Donc $AB_{rec}$ respecte $(I)$
+\end{enumerate}
+	

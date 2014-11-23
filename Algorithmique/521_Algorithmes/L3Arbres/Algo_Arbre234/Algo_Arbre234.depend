@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1383236754 source:/home/agnes/Cours/Info/ProjetsC/Algo_Arbre234/main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

@@ -1,0 +1,23 @@
+Soit $X$ définit \titre{inductivement} par une base $(B)$ et un ensemble de règles $(I)$. On peut aussi définir $X$ par \titre{récurrence} : \\
+$\left. \begin{array}{l}
+	X_0=B \\
+	X_{n+1} = X_n\bigcup \{r_i(x_1,\ldots,x_{n_i}),x_1,\ldots,x_{n_i}\in X_n\}
+\end{array} \right\} X=\displaystyle{\bigcup_{\N}}X_n$\\
+(pour la preuve, voir l'exemple des arbres binaires définis par récurrence)\\
+
+\par
+
+\titre{Lien avec les termes}\\
+$F=B\bigcup I$ ($B=F_0$) \\
+\titre{Ensemble des dérivations de $X$} = $D=$ termes sur $F$\\
+\par
+On pose $h : \begin{array}{lcl}
+	D & \longrightarrow & X \\
+	b\in B & \longrightarrow & b \\
+	r_i(t_1,\ldots,t_{n_i}) & \longrightarrow & r_i(h(t_1),\ldots, h(t_{n_i})) 
+\end{array}$\\
+\par
+La propriété $X=\bigcup X_n$ se réécrit alors \titre{$$X=h(D)=\{h(d),d\in D\}$$} \\
+
+\par
+Si $h$ est \titre{injective}, on parle de définition \titre{non ambigüe} (le chemin pour atteindre un élément est unique.

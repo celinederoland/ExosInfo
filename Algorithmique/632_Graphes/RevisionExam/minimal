@@ -1,0 +1,143 @@
+class UnionFind :
+	def __init__(self): self._g = DiGraph() -- self._rangs = dict()
+	def creerEnsemble(self,val): self._g.add_vertex(val) -- self._rangs[val] = 0
+	def pere(self,val): l = self._g.neighbors_in(val)
+		for p in l: return p -- return val
+	def setPere(self,val,nouveauPere): self._g.delete_edge( (self.pere(val),val) )
+		self._g.add_edge( (nouveauPere,val) )
+	def trouverEnsemble(self, elem): y = elem
+		while self.pere(y) != y: y = self.pere(y) -- return y
+	def unionEnsemble(self, elem1, elem2):
+		rep1 = self.trouverEnsemble(elem1) -- rep2 = self.trouverEnsemble(elem2)
+		if (rep1 != rep2):
+			if (self._rangs[rep1] > self._rangs[rep2]): self.setPere(rep2,rep1)
+			else : self.setPere(rep1,rep2)
+			if (self._rangs[rep1] == self._rangs[rep2]): self._rangs[rep2] += 1
+
+class Parcours :
+	def estTransitif(G):
+		for u in G: for v in G.neighbors(u): for w in G.neighbors(v):
+			if (u != w) and (not G.has_edge(u,w)): return false -- return true
+	def rendreTransitif(G): g = G.copy() -- termine = False
+		while (not termine): termine = True
+			for u in g: for v in g.neighbors(u): for w in g.neighbors(v):
+				if (u != w) and (not g.has_edge(u,w)): g.add_edge( (u,w) ) -- termine = False
+		return g
+	def arbreCouvrantLargeur(G,s): vu = list() pere = list() g = Graph() F = File()
+		for i in G: vu.append(False) pere.append(None) -- vu[s] = 0 F.enfile(s)
+		while (not F.estVide()): u = F.defile()
+			for v in G.neighbors(u): if (not vu[v]):
+				vu[v] = True -- pere[v] = u -- g.add_vertex(v) -- g.add_edge(u,v) -- F.enfile(v)
+		return g
+	def cheminLargeur(G,u,v): vu = dict() pere = dict() F = list()
+		for s in G.vertices(): vu[s] = False -- pere[u] = None vu[u] = True F.append(u)
+		while len(F) != 0 : s = F.pop(0)
+			for w in G.neighbors_out(s): if (vu[w] == False):
+				vu[w] = True pere[w] = s
+				if (w == v): return retrouverChemin(pere,u,v)
+				F.append(w)
+		return list()
+	def arbreCouvrantProfondeur(G,s): vu = list() pere = list() g = Graph()
+		for i in G: vu.append(False) pere.append(None)
+		visiterPP(G,s,vu,pere,g) return g
+	def visiterPP(G,s,vu,pere,g): vu[s] = True
+		for v in G.neighbors(s): if (not vu[v]):
+			pere[v] = s g.add_vertex(v) g.add_edge( (s,v) ) visiterPP(G,v,vu,pere,g)
+	def arbreCouvrantProfondeurSansRec(G,s): vu = list() pere = list() g = Graph() P = Pile()
+		for i in G: vu.append(False) pere.append(None)
+		vu[s] = True pere[s] = None voisins = G.neighbors(s) voisins.reverse() P.empile( (s,voisins) )
+		while (not P.estVide()): L = P.depile() u = L[0] vu[u] = True g.add_vertex(u)
+			if (pere[u] != None): g.add_edge( (pere[u],u) )
+			f = L[1] fini = False
+			while (not fini and len(f) != 0): v = f.pop() if (not vu[v]):
+				pere[v] = u P.empile(L) voisins = G.neighbors(v) voisins.reverse() P.empile( (v,voisins) ) fini = True
+		return g
+	def estBiparti(G): coul = list() F = File() for i in G: coul.append(None)
+		for s in G: if (coul[s] == None): coul[s] = 0 F.enfile(s)
+			while (not F.estVide()): u = F.defile() for v in G.neighbors(u):
+				if (coul[v] != None): if (coul[v] == coul[u]): return False
+				else: coul[v] = 1 - coul[u] F.enfile(v)
+		return True
+	def acyclique(G): vu = list() pere = list() F = File()
+		for i in G: vu.append(False) pere.append(None)
+		for s in G: if (not vu[s]): F.enfile(s) vu[s] = True while (not F.estVide()): u = F.defile()
+			for v in G.neighbors(u):
+				if (vu[v] and pere[u] != v): return False
+				if (not vu[v]): pere[v] = u vu[v] = True F.enfile(v)
+		return True
+	def couper(G,u,v): g = copy(G) S = 0 L = cheminLargeurNO(g,u,v)
+		while (L != []): S += 1 g.delete_edge((L[0],L[1])) L = cheminLargeurNO(g,u,v)
+		return (g,S)
+	def choisirVoisin(G,u,vu):
+		for v in G.neighbors(u): if not vu[(u,v)]: return v
+		return None
+	def balade(G,s,vu): u = s L = [u] v = choisirVoisin(G,u,vu)
+		while (v != s and v != None): L.append(v) vu[(u,v)] = True vu[(v,u)] = True u = v v = choisirVoisin(G,u,vu)
+		if (v == s): L.append(s) return L
+		return []
+	def cycleEulerien(G): vu = dict() initVu(G,vu) s = choisirNonVu(vu) if (s == None): return False
+		l = balade(G,s,vu) L = l
+		while (l != []): l = balade(G,s,vu) L.extend(l)
+		if (choisirNonVu(vu) == None): return L else: return []
+
+class Minimisation:
+	def Prim(G,d,s): pere = list() vu = list() cle = list() g = Graph()
+		for i in G: cle.append(Infinity) vu.append(False) pere.append(None)
+		cle[s] = 0 pere[s] = None g.add_vertex(s)
+		while (resteNonTraites(vu)): u = minParmisNonTraites(cle,vu) vu[u] = True g.add_vertex(u) g.add_edge((pere[u],u))
+			for v in G.neighbors(u): if (not vu[v]) and (d[(u,v)] < cle[v]): cle[v] = d[(u,v)] pere[v] = u
+		return g
+	def Kruskal(G,d,s): U = UnionFind() g = Graph() for v in G: U.creerEnsemble(v) g.add_vertex(v) -- l = trierAretes(d)
+		 for arete in l: if (U.trouverEnsemble(arete[0]) != U.trouverEnsemble(arete[1])):
+				g.add_edge(arete) U.unionEnsemble(arete[0],arete[1])
+		return (U._g,g)
+	def Dijkstra(G,d,s): pere = list() vu = list() cle = list() g = DiGraph()
+		for i in G: cle.append(Infinity) vu.append(False) pere.append(None)
+		cle[s] = 0 pere[s] = None u = minParmisNonTraites(cle,vu)
+		while (u != None): vu[u] = True g.add_vertex(u) 
+			if (pere[u] != None): g.add_edge((pere[u],u))
+			for v in G.neighbors_out(u): if (not vu[v]) and (cle[u] + d[(u,v)] < cle[v]):
+					cle[v] = cle[u] + d[(u,v)] pere[v] = u
+			u = minParmisNonTraites(cle,vu)
+		return g
+	def FloydWarshall(M): n = M.nrows() D = copy(M) I = matrix(n,n)
+		for i in range(0,n): for j in range(0,n):
+			I[i,j] = -1 if (D[i,j] == 0): D[i,j] = Infinity
+		for k in range(0,n): for i in range(0,n): for j in range(0,n):
+			if (D[i,k]+D[k,j] < D[i,j]): D[i,j] = D[i,k] + D[k,j]  I[i,j] = k
+		return (D,I)
+	def chemin(D,I,u,v): if D[u,v] == Infinity: return None
+		if I[u,v] == -1: return [u,v]
+		else: l1 = chemin(D,I,u,I[u,v]) l2 = chemin(D,I,I[u,v],v) l = joindre(l1,l2) return l
+	def arbreMin(D,I,s): n = I.nrows() g = DiGraph() pere = [] vu = []
+		for i in range(n): g.add_vertex(i) pere.append(None) vu.append(False) -- vu[s] = True
+		for u in range(n): if u != s: l = chemin(D,I,s,u) if (l != None): v = u l.pop()
+			while (not vu[v]): vu[v] = True w = l.pop() pere[v] = w g.add_edge(w,v) v = w
+		return g
+	def estFortementConnexe(D): n = D.nrows()
+		for i in range(n): if D[0,i] == Infinity or D[i,0] == Infinity: return False
+		return True
+	def cheminEtendu(M2,D,I,u): M = copy(M2) n = M.nrows() - 1
+		for i in range(n+1): for j in range(n+1): if (M[i,j] == 0): M[i,j] = Infinity
+		taille = M[u,n] actual = -1
+		for i in range(n): if D[u,i] + M[i,n] < taille: actual = i taille = D[u,i] + M[i,n]
+		if taille == Infinity: return None
+		if (actual == -1): return [u,n]
+		else: l = chemin(D,I,u,actual) l.append(n) return l
+
+class Transport :
+	def valeurFlot( R, f ): S = 0 for v in G.neighbors_out('s'): S = S + f[('s',v)] -- return S
+	def residuel( R, d, f ): res = DiGraph() d2 = dict() res.add_vertices( R.vertices() )
+		for arete in d: couple = (arete[0],arete[1]) capacite = d[couple] flot = f[couple]
+			if (capacite - flot) > 0 : label = "%d" % (capacite - flot) res.add_edge(couple)
+				res.set_edge_label(arete[0],arete[1],label) d2[couple] = capacite - flot
+		return (res,d2)
+	def iterationFordFulkerson(R,d,f): S = cheminLargeur(R,'s','p') if S != []:
+		A = list() capacite = list() l = len(S)
+		for i in range(l-1): A.append((S[i],S[i+1])) capacite.append(d[(S[i],S[i+1])])
+		ajout = min(capacite)
+		for arc in A: f[arc] = f[arc] + ajout f[(arc[1],arc[0])] = - f[arc]
+		return True -- else: return False
+	def FordFulkerson(R,d): f = initFlot(d) res = copy(R) d2 = copy(d)
+		while iterationFordFulkerson(res,d2,f): (res,d2) = residuel(R,d2,f)
+		return f

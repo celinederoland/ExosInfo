@@ -1,0 +1,147 @@
+\titre{Besoins réels :} 
+\begin{enumerate}
+	\item Processus d'expression des besoins (reformulation)
+	\item Processus de développement du logiciel
+	\item Processus de tests (vérifier la conformité avec les besoins : tests unitaires, scénarios)
+\end{enumerate}
+
+\titre{Réalisation d'un logiciel de qualite :} 
+\begin{enumerate}
+	\item Pas seulement en fin de processus
+	\item Production échelonnée de documentation (normes, traces, mémoire)
+	\item Prendre en compte les couts de maintenance
+\end{enumerate}
+
+\titre{Assurance qualité :} Mise en oeuvre d'une approche préventive de la qualité, cad ensemble d'actions de prévention des défauts qui accompagnent le processus de développement des artefacts logiciels. (exemple : développement d'un plan de test) \\
+
+\titre{Contrôle qualité :} Mise en oeuvre d'une approche curative de la qualité. Bien que le processus de production soit satisfaisant, il présente des dysfonctionnements dont les effets doivent être éliminés. (exemple : exécution du plan de test) \\
+
+\titre{Activité d'assurance qualité :} Ensemble des actions préétablies et systématiques nécessaires pour donner la confiance appropriée en ce qu'un produit ou un service satisfera aux exigences données relatives à la qualité. Cela passe par l'élaboration d'un Plan d'Assurance Qualité Logiciel. \\
+
+\titre{Manuel qualité (PAQL) :} Document décrivant les dispositions générales prises par l'entreprise pour obtenir la qualité de ses produits ou services; décrit l'ensemble des méthodes, règles et procédures mises en oeuvre pour développer du logiciel de qualité.
+\begin{enumerate}
+	\item Usage interne et externe
+	\item Maîtrisé par tous (en interne)
+	\item Démonstration
+	\item Formation : techniques, méthodes et outils
+\end{enumerate}
+
+\titre{Facteurs et critères de qualité :} 
+\begin{enumerate}
+	\item Facteurs = subjectif. Des choses qui vont favoriser la qualité ou non
+	\item Critères = objectif. Des choses qui vont "prouver" la qualité du projet. (Exemple : taux de couverture)
+\end{enumerate}
+
+\titre{Fiabilité des logiciels :} Probabilité pour qu'une panne du logiciel provoquant un écart par rapport au résultat attendu au delà des tolérances spécifiées, ait lieu deux un environnement opérationnel de référence et à l'intérieur d'une durée d'utilisation donnée. \\
+
+\titre{Fiabilité du matériel :} Doubler les composants (ex : le serveur).\\
+
+\titre{La fiabilité du logiciel dépend de :}
+\begin{enumerate}
+	\item Du recueil des besoins
+	\item De la qualité de la conception
+	\item De la qualité de la réalisation
+	\item De la fiabilité des composants logiciels
+\end{enumerate}
+
+\titre{Le code :} Il faut ajouter du code pour faire les vérifications nécessaires (ne pas faire d'économie de code, mais éviter les redondances inutiles susceptibles de créer des problèmes de mise à jour).
+\begin{enumerate}
+	\item L'efficacité est testée sur une petite partie du code
+	\item La fiabilité doit être constante sur la totalité du code
+	\item L'inefficacité peut être prédite, pas la non fiabilité
+\end{enumerate}
+
+\titre{Sécurité des logiciels :} Protection des ressources d'un système informatique contre les événements à caractère accidentel ou intentionnel : modification ou destruction des ressources, observation non autorisée des ressources, indisponibilité des ressources ou services etc. \\
+
+\titre{Répartition des causes de pertes de données :} Sur la base des déclarations des préjudiciés
+\begin{enumerate}
+	\item erreurs (des programmeurs): 30\%
+	\item incidents (coupures électriques ou autres): 34\%
+	\item malveillance : 36\%
+\end{enumerate}
+
+\titre{Répartition des fraudeurs :}
+\begin{enumerate}
+	\item Extérieurs : 10\%
+	\item Utilisateurs : 35\%
+	\item Informaticiens : 55\%
+\end{enumerate}
+
+\titre{Traitements induits :}
+\begin{enumerate}
+	\item Contrôle d'accès
+	\item Contrôles de validité, cohérence de l'information saisie
+	\item Redondances
+	\item Audits d'intégrité, pistes d'audits
+	\item Alertes sur seuils
+	\item Cryptage
+\end{enumerate}
+
+\titre{Plan type d'un PAQL (Plan Assurance Qualité Logiciel) :}
+\begin{enumerate}
+	\item But, Domaine d'application et responsabilité : Portée du plan qualité et dispositions pour en assurer son application.
+	\item Documents applicables et documents de références (documents appelés dans le plan qualité)
+	\item Terminologie (glossaire, vocabulaire) : définir par rapport au client et en interne (définition des termes robustesse, fiabilité etc)
+	\item Organisation : Personnes intervenant dans le projet (rôle, place dans l'entreprise, responsabilité dans le projet, liens hiérarchiques et fonctionnels)
+	\item Démarche de développement : Liste des phases de développement en spécifiant :
+	\begin{itemize}
+		\item Contenu des activités de la phase
+		\item Documents ou produits en entrée de la phase
+		\item Documents ou produits réalisés dans la phase
+		\item Conditions de passage à la phase suivante et points clés
+	\end{itemize}
+	\item Documentation
+	\begin{itemize}
+		\item Liste des documents produits dans chaque phase
+		\item Références aux plans types de chaque document
+		\item Statut du document : livrable, consultable, privée
+		\item Documents classés en :
+		\begin{itemize}
+			\item Documents de gestion de projet
+			\item Documents techniques de réalisation
+			\item Manuels d'utilisation et d'exploitation
+		\end{itemize}
+	\end{itemize}
+	\item Gestion des configurations : Eléments de configuration, moyens de développement et de tests, conventions d'identification
+	\item Gestion des modifications :
+	\begin{itemize}
+		\item Le responsable de leur mise en oeuvre
+		\item Règles d'évolution et d'identification des éléments modifiés et de la nomenclature
+	\end{itemize}
+	\item Méthodes, outils et règles
+	\item Contrôle des fournisseurs (les sous traitants)
+	\item Reproduction, protection, livraison
+	\item Suivi de l'application du plan qualité : Dispositions prises
+	\begin{itemize}
+		\item Interventions du responsable qualité sur la démarche de développement
+		\item Interventions du responsable qualité dans les procédures de gestion des configurations, de gestion des modifications, la vérification des exigences de qualité envers les fournisseurs.
+		\item Modalités de recette et qualification
+	\end{itemize}
+	\item Annexes
+	\begin{itemize}
+		\item Fiche d'anomalie
+		\item Rapport d'inspection
+		\item Rapport d'audit
+		\item Demande de modification
+		\item Demande de dérogation
+		\item Demande d'évolution du PAQ
+	\end{itemize}
+\end{enumerate}
+
+\titre{Cycle PDCA ou roue de DEMING :} Plan Do Check Act : idée = mettre en place un processus itératif permettant d'avancer dans le projet en veillant à la qualité. Réaliser progressivement des améliorations et répéter le cycle d'amélioration de nombreuses fois (cercle vertueux). On va s'améliorer au cours du projet, mais aussi d'un projet à l'autre.\\
+
+\titre{Prévoir Faire Contrôler Agir } en faisant attention à ne pas reculer (mettre en place une "cale"). On peut le traduire par Planifier, Développer(Documenter), Contrôler, Agir(Améliorer). \\
+
+\titre{Documentation } à chaque phase du cycle, pour montrer qu'on conduit le projet.\\
+
+\titre{Etape 1 : Préparer, Planifier } Ecrire ce que l'on va faire, se fixer des objectifs, des méthodes de travail, des étapes, montrer comment les objectifs vont être atteints. Il faut utiliser les éléments méthodologiques de l'entreprise (PAQ, standards etc ). Aboutit sur :
+\begin{enumerate}
+	\item Cahier des charges
+	\item Un plan d'action/de projet/de travail
+\end{enumerate}
+
+\titre{Etape 2 : Développer et Documenter } Réaliser, produire et tester (écrire ce que l'on a fait). \\
+
+\titre{Etape 3 : Contrôler } Mettre en oeuvre les points de contrôle pré-établis, utiliser des indicateurs de performance, analyser des écarts sur le tableau de bord (liste quotidienne de tâches) etc. Faire des revues de projet (point plus poussé pour favoriser la visualisation collective), Analyse matricielle (croiser deux listes, exemple : besoins en lignes, produits en colonnes). \\
+
+\titre{Etape 4 : Agir } Pour maintenir la capacité de l'équipe à faire e travail, réagir pour lancer des actions correctives

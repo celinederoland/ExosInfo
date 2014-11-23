@@ -1,0 +1,23 @@
+\titre{Définition} : $(\mathcal{B},\et,\ou,\non)$ où $\mathcal{B} = \{0;1\}$ avec $0$ est la classe d'équivalence de $p\et\non p$ et $1$ est la classe d'équivalence de $p\ou\non p$ pour la relation $\equi$\\
+
+\titre{Propriétés}
+\begin{itemize}
+  \item Idempotence : $A\et A \equi A; A\ou A \equi A$
+  \item Non contradiction : $A\et \non A \equi O$ (symétrique pour $\et$)
+  \item Tiers exclu : $A \ou \non A \equi 1$ (symétrique pour $\ou$)
+  \item Bivalence : $\non 1 \equi 0$ et $\non O \equi 1$
+  \item Double négation : $\non \non A \equi A$
+  \item Eléments neutres : $A\et 1 \equi A$ et $A \ou 0 \equi A$
+  \item Eléments absorbants : $A \et 0 \equi 0$ et $A \ou 1 \equi 1$
+  \item Commutativité de $\et$ et $\ou$
+  \item Associativité de $\et$ et $\ou$
+  \item Distributivité : $A\et(B\ou C) \equi (A \et B)\ou(A\et C)$ et $A\ou(B\et C) \equi (A\ou B) \et (A \ou C)$
+  \item Lois d'absorbtion : $A \ou (A\et B) \equi A$ et $A\et (A\ou B) \equi A$
+\end{itemize}
+
+\titre{Equivalences fondamentales}
+\begin{itemize}
+  \item Loi de De Morgan
+  \item $A \leftrightarrow B \equi (A \rightarrow B) \et (B \rightarrow A)$
+  \item $A \rightarrow B \equi (\non A \ou B) \equi (\non B \rightarrow \non A)$
+\end{itemize}

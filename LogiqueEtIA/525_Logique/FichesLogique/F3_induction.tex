@@ -1,0 +1,21 @@
+\titre{Définition inductive} : Soit $E$ un ensemble, on définit $X$ le plus petit sous ensemble de $E$ tel que : \\ $ \left\{ \begin{array}{l} (B) : B\subset X \\ (I) : (r_i : \ffonc{E^{n_i}}{E}) \end{array} \right. $ \\
+$B$ est la base et $I$ l'ensemble des règles d'induction. \\
+
+\par
+
+\titre{Notations} (exemples) \\
+$\N = \left\{ \begin{array}{l} (B) : 0 \in \N \\ (I) : \forall n \in \N, n+1\in \N \end{array} \right.
+= \left\{ \frac{}{0} \; \frac{n}{n+1} \right\}$\\
+$\Sigma^* = \left\{ \begin{array}{l} (B) : \epsilon \in \Sigma^* \\ (I) : \forall w \in \Sigma^*, a\in\Sigma, wa\in \Sigma^* \end{array} \right. = \left\{ \frac{}{\epsilon} \; \frac{w}{wa} \right\}$ \\
+$\{ a^nbc^n \} = \left\{ \frac{}{b} \frac{x}{axc} \right\}$ \\
+
+\par
+
+\titre{Preuve par induction} $\mathcal{P}$ est vraie sur $X$ si et seulement si : \\
+$\left\{ \begin{array}{l} \mathcal{P} \; \mathrm{vraie} \; \mathrm{sur} \; B \\ \mathcal{P} \; \mathrm{stable} \; \mathrm{par} \; (I) \end{array} \right.$ \\
+
+\par
+
+\titre{Fonction définie inductivement} : \\
+On définit $f$ sur $B$ \\
+$\forall x = r_i(x_1,\ldots,x_{n_i})\in X, f(x) = r_i(f(x_1),\ldots,f(x_{n_i}))$ 

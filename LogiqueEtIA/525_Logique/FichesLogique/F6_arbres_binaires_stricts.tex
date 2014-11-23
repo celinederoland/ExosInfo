@@ -1,0 +1,16 @@
+\titre{Définition} \\
+$\left\{ \begin{array}{l}
+	(B) : (\vide,a\vide)\in ABS \forall a \in A \\
+	(I) : \forall g,d\in ABS, \forall a\in A, (g,a,d)\in ABS 
+\end{array} \right.$ \\
+\par
+\titre{Propriété} : $n=2f-1$ ($n=$ nombre de sommets, $f=$ nombre de feuilles) \\
+\titre{Preuve} ;
+	\begin{enumerate}
+	\item Montrons que $\mathcal{P}$ est vraie sur $B$ \\
+	Pour $(\vide,a,\vide)$, on a $n=1$ et $f=1$ donc $\mathcal{P}$ vraie ($2\times 1 - 1 = 1$) \\
+	\item Supposons $\mathcal{P}$ vraie pour $g$ et $d$ dans $ABS$ et montrons que $\mathcal{P}$ est vraie pour $(g,a,d)$. \\
+	$f=f_g+f_d$ et $n=n_g+n_d+1$ \\
+	Donc $n=2f_g-1+2f_d-1+1 = 2f-1$
+	\end{enumerate}
+	

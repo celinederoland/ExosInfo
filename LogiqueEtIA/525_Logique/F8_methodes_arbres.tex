@@ -1,0 +1,25 @@
+\titre{Règles de réécriture}\\
+$\begin{array}{c} A\et B \\ | \\ A \\ B \end{array}$
+\hspace{2cm}
+$\begin{array}{ccc} & A \ou B & \\  & / \hspace{0.7cm} \backslash & \\ A &  & B \end{array}$
+\hspace{2cm}
+$\begin{array}{ccc} & \non (A \et B) & \\ & / \hspace{0.7cm} \backslash & \\ \non A & & \non B \end{array}$
+\hspace{2cm} \\ \\ \vspace{1cm}
+$\begin{array}{c} \non (A\ou B) \\ | \\ \non A \\ \non B \end{array}$
+\hspace{2cm}
+$\begin{array}{c} \non\non A \\ | \\ A \end{array}$
+\hspace{2cm}
+$\begin{array}{ccc} & A \rightarrow B & \\ & / \hspace{0.7cm} \backslash & \\ \non A & & \non B \end{array}$
+\hspace{2cm}\\ \\ \vspace{1cm}
+$\begin{array}{ccc} & A \leftrightarrow B & \\ & / \hspace{0.7cm} \backslash & \\ \non A & & A \\ \non B & & B \end{array}$
+\hspace{2cm}
+$\begin{array}{c} \non (A \rightarrow B) \\ | \\ A \\ \non B \end{array}$
+\hspace{2cm} \\ \\ \vspace{1cm}
+$\begin{array}{ccc} & \non (A \leftrightarrow B) & \\ & / \hspace{0.7cm} \backslash & \\ A & & \non A \\ \non B & & B \end{array}$\\
+
+\titre{Méthode}
+\begin{itemize}
+  \item On ferme un chemin dès qu'il contient une formule et sa négation. 
+  \item Les chemins non fermés donnent un terme de la FND
+  \item Si tous les chemins sont fermés, c'est une contradiction
+\end{itemize}
